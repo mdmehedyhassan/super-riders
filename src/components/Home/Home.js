@@ -14,7 +14,7 @@ const Home = () => {
             {
                 <div className='justify-content-center'>
                     <div className="d-flex flex-wrap p-5 justify-content-around">
-                        {riders.map(rider => <HomeDetail key={rider.id} rider={rider} ></HomeDetail>)}
+                        {riders.map(rider => <HomeDetail key={rider.ridersId} rider={rider} ></HomeDetail>)}
                     </div>
                 </div>
             }

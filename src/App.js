@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home/Home';
-import React from "react";
+import React, { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,28 +9,33 @@ import {
 import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Destination from './components/Destination/Destination';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <p>name: {loggedInUser.name}</p>
       <Router>
-        <Header/>
+        <Header />
         <Switch>
           <Route path="/home">
-            <Home/>
+            <Home />
           </Route>
           <Route path="/login">
-            <Login/>
+            <Login />
           </Route>
-          <Route path="/destination/:name">
-            <Destination/>
-          </Route>
+          <PrivateRoute path="/destination/:name">
+            <Destination />
+          </PrivateRoute>
           <Route path="/">
-            <Home/>
+            <Home />
           </Route>
         </Switch>
       </Router>
-    </div>
+    </UserContext.Provider>
   );
 }
 

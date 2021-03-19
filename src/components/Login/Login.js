@@ -32,10 +32,25 @@ const Login = () => {
             });
 
     }
+
+    const handleChange = (e) => {
+        console.log(e.target.name, e.target.value)
+    }
+    const handleSignInSubmit = () => {
+
+    }
+
     return (
-        <div>
-            <h1>this is login</h1>
-            <button onClick={handleGoogleSignIn}>Continue with Google</button>
+        <div className="d-flex flex-column justify-content-center align-items-center">
+            <form onSubmit={handleSignInSubmit} className="d-flex flex-column justify-content-center align-items-center">
+            <input type="text" name="name" onChange={handleChange} id="" placeholder="Name" required/>
+            <input type="text" name="email" onChange={handleChange} id="" placeholder="Username or Email" required/>
+            <input type="password" name="password" onChange={handleChange} id="" placeholder="Password" required/>
+            <input type="password" name="confirmPassword" onChange={handleChange} id="" placeholder="Confirm Password" required/>
+            <input type="submit" value="Submit"/>
+            </form>
+            <br/>
+            <button type="button" className="btn btn-outline-warning" onClick={handleGoogleSignIn}>Continue with Google</button>
         </div>
     );
 };

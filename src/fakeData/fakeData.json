@@ -2,23 +2,31 @@
     "ridersId": 1,
     "name": "BIKE",
     "image": "https://i.ibb.co/chzdvcy/Frame.png",
-    "price": 120
+    "price": 120,
+    "capacity": 1,
+    "ticket": 1
 },
 {
     "ridersId": 2,
     "name": "CAR",
     "image": "https://i.ibb.co/9Z6xZjC/Frame-2.png",
-    "price": 250
+    "price": 250,
+    "capacity": 4,
+    "ticket": 1
 },
 {
     "ridersId": 3,
     "name": "BUS",
     "image": "https://i.ibb.co/ScSSvHM/bus.png",
-    "price": 60
+    "price": 60,
+    "capacity": 40,
+    "ticket": 1
 },
 {
     "ridersId": 4,
     "name": "TRAIN",
     "image": "https://i.ibb.co/McBXB8X/train.png",
-    "price": 40
+    "price": 40,
+    "capacity": 200,
+    "ticket": 1
 }]

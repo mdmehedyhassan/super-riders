@@ -12,7 +12,7 @@ const Destination = () => {
     return (
         <div>
             <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-6">
                     {ridersBook ? <div className="bg-light p-5">
                         <label htmlFor="">Pick From</label>
                         <input className="w-100 mb-4" type="text" placeholder="Mirpor 1" />
@@ -49,8 +49,8 @@ const Destination = () => {
                     </div>}
 
                 </div>
-                <div className="col-md-8">
-                    <img src="https://i.ibb.co/zh3MC60/Map.png" alt="" />
+                <div className="col-md-6">
+                    <img src="https://i.ibb.co/zh3MC60/Map.png" className="w-100" alt="" />
                 </div>
             </div>
         </div>

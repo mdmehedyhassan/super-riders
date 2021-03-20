@@ -105,7 +105,7 @@ const Login = () => {
                 <input className="m-2" type="password" name="password" onBlur={handleBlur} id="" placeholder="Password" required />
                 {newUser && <input type="password" className="m-2" name="password" onBlur={handleBlur} id="" placeholder="Confirm Password" />}
 
-                <input className="m-2 bg-warning rounded-pill" type="submit" value={newUser ? "Login" : "Create an account"} />
+                <input className="m-2 bg-warning rounded-pill" type="submit" value={newUser ? "Create an account"  : "Login"} />
 
                 <label htmlFor="newUser">{newUser ? "Already have an account? " : "Don't have an account? "} 
                     <span className="text-info">{newUser ? 'Login' : 'Create an account'}</span> <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> 

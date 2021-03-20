@@ -2,11 +2,11 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBiking } from '@fortawesome/free-solid-svg-icons';
+import { faBiking, faTicketAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 const HomeDetail = (props) => {
-    const { name, image, price } = props.rider;
+    const { name, image, price, capacity, ticket} = props.rider;
     const history = useHistory();
     const handleRiders = names =>{
         const url = `destination/${name}`;
@@ -19,6 +19,8 @@ const HomeDetail = (props) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Title>Price: ${price}</Card.Title>
+                    <Card.Title>Capacity: <FontAwesomeIcon icon={faUsers} /> {capacity}</Card.Title>
+                    <Card.Title>ticket: <FontAwesomeIcon icon={faTicketAlt} /> {ticket}</Card.Title>
                     <button className="btn btn-outline-success"><FontAwesomeIcon icon={faBiking} /> Riders</button>
                 </Card.Body>
             </Card>

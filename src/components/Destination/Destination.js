@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import fakeData from '../../fakeData/fakeData.json'
+import fakeData from '../../fakeData/fakeData.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTicketAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Destination = () => {
     const [ridersBook, setRidersBook] = useState(true);
@@ -21,25 +23,29 @@ const Destination = () => {
                         <br />
                         <button onClick={() => setRidersBook(!ridersBook)} className="btn btn-warning w-100">Search</button>
                     </div> : <div className="d-flex flex-column bd-highlight mb-3 bg-light p-5">
-                        <div className="p-4 mb-2 justify-content-between w-100 d-flex flex-column bg-warning text-light  border border-info bd-highlight rounded-pill">
+                        <div className="p-4 mb-2 justify-content-between w-100 d-flex flex-column bg-warning text-light  border border-info bd-highlight rounded-3">
                             <h4>Mirpor 1</h4>
                             <h4>Danmondi</h4>
                         </div>
                         <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row  border border-info bd-highlight rounded-pill">
                             <img style={{ width: '30px' }} src={rider.image} alt="" />
                             <p>{rider.name}</p>
+                            <p><FontAwesomeIcon icon={faTicketAlt} /> {rider.ticket}</p>
                             <p>${rider.price}</p>
                         </div>
                         <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row  border border-info bd-highlight rounded-pill">
                             <img style={{ width: '30px' }} src={rider.image} alt="" />
                             <p>{rider.name}</p>
+                            <p><FontAwesomeIcon icon={faTicketAlt} /> {rider.ticket}</p>
                             <p>${rider.price}</p>
                         </div>
                         <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row  border border-info bd-highlight rounded-pill">
                             <img style={{ width: '30px' }} src={rider.image} alt="" />
                             <p>{rider.name}</p>
+                            <p><FontAwesomeIcon icon={faTicketAlt} /> {rider.ticket}</p>
                             <p>${rider.price}</p>
                         </div>
+                        <button onClick={() => setRidersBook(!ridersBook)} className="btn btn-success w-100">Return Search</button>
                     </div>}
 
                 </div>

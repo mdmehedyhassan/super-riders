@@ -17,7 +17,7 @@ const Login = () => {
         error: '',
         success: false
     })
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [ setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
@@ -108,7 +108,7 @@ const Login = () => {
                 <input className="m-2 bg-warning rounded-pill" type="submit" value={newUser ? "Create an account" : "Login"} />
 
                 <label htmlFor="newUser">{newUser ? "Already have an account? " : "Don't have an account? "} 
-                    <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> <span>{newUser ? 'Login' : 'Create an account'}</span>
+                    <span className="text-info">{newUser ? 'Login' : 'Create an account'}</span> <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> 
                 </label> 
             </form>
             <p className="bg-danger text-warning">{user.error}</p>
@@ -116,9 +116,7 @@ const Login = () => {
                 user.success && <p className="bg-success text-light">User {newUser ? "create" : "logged in"} successfully</p>
             }
             <h4>Or</h4>
-            <br />
-
-            <button type="button" className="btn btn-outline-warning rounded-pill" onClick={handleGoogleSignIn}><FontAwesomeIcon className="text-primary" icon={faGoogle} /> Continue with Google</button>
+            <button type="button" className="mb-5 btn btn-danger rounded-pill" onClick={handleGoogleSignIn}><FontAwesomeIcon className="text-success" icon={faGoogle} /> Continue with Google</button>
         </div>
     );
 };

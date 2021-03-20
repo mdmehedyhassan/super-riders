@@ -1,12 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
-    
+    const [newUser, setNewUser] = useState(false);
+    const [user, setUser] = useState({
+        isSignIn: false,
+        name: '',
+        email: '',
+        password: '',
+        error: '',
+        success: false
+    })
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
@@ -44,23 +54,73 @@ const Login = () => {
             const passwordNumber = /\d{1}/.test(e.target.value)
             isFormValid = isPasswordValid && passwordNumber;
         }
-        
+        if (isFormValid) {
+            const newUserInfo = { ...user };
+            newUserInfo[e.target.name] = e.target.value;
+            setUser(newUserInfo);
+        }
     }
-    const handleSignInSubmit = () => {
+    const handleSignInSubmit = (e) => {
+        console.log(user.email, user.password)
+        if (newUser && user.email && user.password) {
+            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                .then((res) => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setUser(newUserInfo)
+                })
+                .catch((error) => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setUser(newUserInfo)
+                });
+        }
 
+        if (!newUser && user.email && user.password) {
+            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+                .then((res) => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setUser(newUserInfo)
+                })
+                .catch((error) => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setUser(newUserInfo)
+                });
+        }
+
+        e.preventDefault();
     }
 
     return (
         <div className="d-flex flex-column justify-content-center align-items-center">
-            <form onSubmit={handleSignInSubmit} className="d-flex flex-column justify-content-center align-items-center">
-                <input type="text" name="name" onBlur={handleBlur} id="" placeholder="Name" required />
-                <input type="text" name="email" onBlur={handleBlur} id="" placeholder="Username or Email" required />
-                <input type="password" name="password" onBlur={handleBlur} id="" placeholder="Password" required />
-                <input type="password" name="password" onBlur={handleBlur} id="" placeholder="Confirm Password" required />
-                <input type="submit" value="Submit" />
+            <form onSubmit={handleSignInSubmit} className="p-5 rounded-3 bg-light  border border-info d-flex flex-column justify-content-center align-items-center">
+                {newUser && <input type="text" className="m-2" name="name" onBlur={handleBlur} id="" placeholder="Name" />}
+                <input className="m-2" type="text" name="email" onBlur={handleBlur} id="" placeholder="Username or Email" required />
+                <input className="m-2" type="password" name="password" onBlur={handleBlur} id="" placeholder="Password" required />
+                {newUser && <input type="password" className="m-2" name="password" onBlur={handleBlur} id="" placeholder="Confirm Password" />}
+                {
+                    newUser? <input className="m-2 bg-warning rounded-pill" type="submit" value="Create an account" />
+                    : <input className="m-2 bg-warning rounded-pill" type="submit" value="Login" />
+                }
+
+                <label htmlFor="newUser">{newUser ? "Already have an account? " : "Don't have an account? "} 
+                    <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> <span>{newUser ? 'Login' : 'Create an account'}</span>
+                </label> 
             </form>
+            <p className="bg-danger text-warning">{user.error}</p>
+            {
+                user.success && <p className="bg-success text-light">User {newUser ? "create" : "logged in"} successfully</p>
+            }
+            <h4>Or</h4>
             <br />
-            <button type="button" className="btn btn-outline-warning" onClick={handleGoogleSignIn}>Continue with Google</button>
+
+            <button type="button" className="btn btn-outline-warning rounded-pill" onClick={handleGoogleSignIn}><FontAwesomeIcon className="text-primary" icon={faGoogle} /> Continue with Google</button>
         </div>
     );
 };

@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Destination from './components/Destination/Destination';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Contact from './components/Contact/Contact';
 
 export const UserContext = createContext();
 
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <PrivateRoute path="/destination/:name">
             <Destination />
+          </PrivateRoute>
+          <PrivateRoute path="/contact">
+            <Contact />
           </PrivateRoute>
           <Route path="/">
             <Home />

@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
-    const [newUser, setNewUser] = useState(false);
+    const [newUser, setNewUser] = useState(true);
     const [user, setUser] = useState({
         isSignIn: false,
         name: '',

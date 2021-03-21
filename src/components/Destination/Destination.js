@@ -11,41 +11,43 @@ const Destination = () => {
 
     return (
         <div>
-            <div className="row">
+            <div className="row bg-light pt-2 border-top">
                 <div className="col-md-6">
                     {ridersBook ? <div className="bg-light p-5">
                         <label htmlFor="">Pick From</label>
-                        <input className="w-100 mb-4" type="text" placeholder="Mirpor 1" />
+                        <input className="w-100 border-info shadow-lg mb-4" type="text" placeholder="Mirpor 1" />
                         <label htmlFor="">Pick to</label>
-                        <input className="w-100 mb-4" type="text" placeholder="Danmondi" />
+                        <input className="w-100 border-info shadow-lg mb-4" type="text" placeholder="Danmondi" />
                         <label htmlFor="">Pick time</label>
-                        <input className="w-100 mb-4" type="time" name="" id="" />
+                        <input className="w-100 border-info shadow-lg mb-4" type="time" name="" id="" />
                         <br />
                         <button onClick={() => setRidersBook(!ridersBook)} className="btn btn-warning w-100">Search</button>
                     </div> : <div className="d-flex flex-column bd-highlight mb-3 bg-light p-5">
-                        <div className="p-4 mb-2 justify-content-between w-100 d-flex flex-column bg-warning text-light  border border-info bd-highlight rounded-3">
-                            <h4>Mirpor 1</h4>
-                            <h4>Danmondi</h4>
+                        <div className="mb-2 justify-content-between w-100 d-flex flex-column bg-warning text-light  border border-info bd-highlight rounded-3">
+                            <ul>
+                                <li>Mirpor 1</li>
+                                <li>Danmondi</li>
+                            </ul>
                         </div>
-                        <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row  border border-info bd-highlight rounded-pill">
+                        <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row shadow-lg  border border-info bd-highlight rounded-pill">
                             <img style={{ width: '30px' }} src={rider.image} alt="" />
                             <p>{rider.name}</p>
                             <p><FontAwesomeIcon icon={faTicketAlt} /> {rider.ticket}</p>
                             <p>${rider.price}</p>
                         </div>
-                        <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row  border border-info bd-highlight rounded-pill">
+                        <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row shadow-lg border border-info bd-highlight rounded-pill">
                             <img style={{ width: '30px' }} src={rider.image} alt="" />
                             <p>{rider.name}</p>
                             <p><FontAwesomeIcon icon={faTicketAlt} /> {rider.ticket}</p>
                             <p>${rider.price}</p>
                         </div>
-                        <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row  border border-info bd-highlight rounded-pill">
+                        <div className="p-2 mb-2 justify-content-between w-100 d-flex flex-row shadow-lg border border-info bd-highlight rounded-pill">
                             <img style={{ width: '30px' }} src={rider.image} alt="" />
                             <p>{rider.name}</p>
                             <p><FontAwesomeIcon icon={faTicketAlt} /> {rider.ticket}</p>
                             <p>${rider.price}</p>
                         </div>
-                        <button onClick={() => setRidersBook(!ridersBook)} className="btn btn-success w-100">Return Search</button>
+                        <button onClick={() => setRidersBook(!ridersBook)} className="btn btn-secondary w-100">Return Search</button>
                     </div>}
 
                 </div>

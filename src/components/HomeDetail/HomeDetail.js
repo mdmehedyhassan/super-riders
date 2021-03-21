@@ -14,7 +14,7 @@ const HomeDetail = (props) => {
     }
     return (
         <div>
-            <Card onClick={handleRiders} className="mb-4 justify-content-center align-items-center" style={{ width: '15rem' }}>
+            <Card onClick={handleRiders} className="mb-4 justify-content-center align-items-center shadow-lg rounded-3" style={{ width: '15rem' }}>
                 <Card.Img className="p-5" variant="top" src={image} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>

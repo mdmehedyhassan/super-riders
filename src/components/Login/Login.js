@@ -100,12 +100,12 @@ const Login = () => {
     return (
         <div className="d-flex flex-column justify-content-center align-items-center">
             <form onSubmit={handleSignInSubmit} className="p-5 rounded-3 bg-light  border border-info d-flex flex-column justify-content-center align-items-center">
-                {newUser && <input type="text" className="m-2" name="name" onBlur={handleBlur} id="" placeholder="Name" />}
-                <input className="m-2" type="text" name="email" onBlur={handleBlur} id="" placeholder="Username or Email" required />
-                <input className="m-2" type="password" name="password" onBlur={handleBlur} id="" placeholder="Password" required />
-                {newUser && <input type="password" className="m-2" name="password" onBlur={handleBlur} id="" placeholder="Confirm Password" />}
+                {newUser && <input type="text" className="mb-4" name="name" onBlur={handleBlur} id="" placeholder="Name" />}
+                <input className="mb-4" type="text" name="email" onBlur={handleBlur} id="" placeholder="Username or Email" required />
+                <input className="mb-4" type="password" name="password" onBlur={handleBlur} id="" placeholder="Password" required />
+                {newUser && <input type="password" className="mb-4" name="password" onBlur={handleBlur} id="" placeholder="Confirm Password" />}
 
-                <input className="m-2 mb-4 bg-warning rounded-pill" type="submit" value={newUser ? "Create an account"  : "Login"} />
+                <input className=" mb-5 bg-warning rounded-pill" type="submit" value={newUser ? "Create an account"  : "Login"} />
 
                 <label htmlFor="newUser">{newUser ? "Already have an account? " : "Don't have an account? "} 
                     <input type="submit" onClick={() => setNewUser(!newUser)} name="newUser" value={newUser ? 'Login' : 'Create an account'} id="" /> 

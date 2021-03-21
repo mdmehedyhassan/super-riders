@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     return (
-        <div className="row bg-light text-info p-2 align-items-center">
+        <div className="row bg-light text-info align-items-center">
             <div className="col-6 d-flex justify-content-center align-items-center ">
                 <h1>Super Riders</h1>
             </div>
